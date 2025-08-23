@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router as api_router
+from app.routes.load import router as load_router
+from app.routes.player import router as player_router
 
 app = FastAPI()
 
@@ -15,6 +17,9 @@ app.add_middleware(
 
 # Include the API router
 app.include_router(api_router)
+app.include_router(load_router)
+app.include_router(player_router)
+
 
 @app.get("/")
 def read_root():
