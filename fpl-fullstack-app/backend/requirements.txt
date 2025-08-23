@@ -1,0 +1,6 @@
+Flask
+FastAPI
+SQLAlchemy
+pydantic
+httpx
+python-dotenv
