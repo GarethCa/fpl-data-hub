@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 
 export default function PlayersTable({ columns, players, loading, error }: any) {
-    // Calculate page size based on viewport height (approximate row height: 56px, header: 56px, padding: 32px)
     const rowHeight = 56;
     const headerHeight = 56;
     const padding = 16;
-    const [pageSize, setPageSize] = React.useState(10);
-    const [tableKey, setTableKey] = React.useState(0);
+    const [pageSize, setPageSize] = useState(10);
+    const [tableKey, setTableKey] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
-    React.useEffect(() => {
+    // Dynamically set page size based on available height
+    useEffect(() => {
         const handleResize = () => {
             const availableHeight = window.innerHeight - headerHeight - padding;
             const rows = Math.floor(availableHeight / rowHeight);
@@ -26,8 +27,12 @@ export default function PlayersTable({ columns, players, loading, error }: any) 
     const handleRowClicked = (row: any) => {
         navigate(`/player/${row.id}`);
     };
+
     return (
-        <div className="max-w-8xl bg-white rounded-xl shadow-lg p-6 flex-1 pb-0">
+        <div
+            ref={containerRef}
+            className="w-full bg-white rounded-xl shadow-lg p-6 flex-1 pb-0"
+        >
             {loading ? (
                 <div className="text-center text-xl text-indigo-700">Loading players...</div>
             ) : error ? (
@@ -35,38 +40,40 @@ export default function PlayersTable({ columns, players, loading, error }: any) 
                     Could not load player data. Please try again later.
                 </div>
             ) : (
-                <DataTable
-                    key={tableKey}
-                    columns={columns}
-                    data={players}
-                    pagination
-                    paginationPerPage={pageSize}
-                    paginationRowsPerPageOptions={[pageSize]}
-                    highlightOnHover
-                    striped
-                    responsive
-                    onRowClicked={handleRowClicked}
-                    progressPending={loading}
-                    noDataComponent="No players found"
-                    customStyles={{
-                        headCells: {
-                            style: {
-                                backgroundColor: "#364152",
-                                color: "#e0e7ff",
-                                fontWeight: 700,
+                <div className="w-full">
+                    <DataTable
+                        key={tableKey}
+                        columns={columns}
+                        data={players}
+                        pagination
+                        paginationPerPage={pageSize}
+                        paginationRowsPerPageOptions={[pageSize]}
+                        highlightOnHover
+                        striped
+                        responsive
+                        onRowClicked={handleRowClicked}
+                        progressPending={loading}
+                        noDataComponent="No players found"
+                        customStyles={{
+                            headCells: {
+                                style: {
+                                    backgroundColor: "#364152",
+                                    color: "#e0e7ff",
+                                    fontWeight: 700,
+                                },
                             },
-                        },
-                        rows: {
-                            style: {
-                                fontFamily: "inherit",
+                            rows: {
+                                style: {
+                                    fontFamily: "inherit",
+                                },
+                                highlightOnHoverStyle: {
+                                    backgroundColor: "#f1f5fd",
+                                    outline: "none",
+                                },
                             },
-                            highlightOnHoverStyle: {
-                                backgroundColor: "#f1f5fd",
-                                outline: "none",
-                            },
-                        },
-                    }}
-                />
+                        }}
+                    />
+                </div>
             )}
         </div>
     );
