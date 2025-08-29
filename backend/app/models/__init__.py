@@ -19,6 +19,10 @@ from .user_team import UserTeamBase
 from .user_team import UserTeamCreate
 from .user_team import UserTeamRead
 
+from .phase import PhaseBase
+from .phase import PhaseCreate
+from .phase import PhaseRead
+
 __all__ = [
     "EventBase",
     "EventCreate",
@@ -36,4 +40,7 @@ __all__ = [
     "UserTeamBase",
     "UserTeamCreate",
     "UserTeamRead",
+    "PhaseBase",
+    "PhaseCreate",
+    "PhaseRead",
 ]

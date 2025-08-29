@@ -6,5 +6,7 @@ from .event import Event
 from .fixture import Fixture
 from .user_team import UserTeam
 from .player import Player
+from .phase import Phase
+from .element_types import ElementType
 
-__all__ = ["Player", "Team", "Event", "Fixture", "UserTeam"]
+__all__ = ["Player", "Team", "Event", "Fixture", "UserTeam", "Phase", "ElementType"]

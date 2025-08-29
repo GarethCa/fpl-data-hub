@@ -1,19 +1,33 @@
-from typing import Optional
 from pydantic import BaseModel
+from typing import Optional
 
 
 class TeamBase(BaseModel):
     id: int
+    code: int
+    draw: int
+    form: Optional[str]
+    loss: int
     name: str
+    played: int
+    points: int
+    position: int
     short_name: str
-    strength: Optional[int] = None
+    strength: int
+    team_division: Optional[int]
+    unavailable: bool
+    win: int
+    strength_overall_home: int
+    strength_overall_away: int
+    strength_attack_home: int
+    strength_attack_away: int
+    strength_defence_home: int
+    strength_defence_away: int
+    pulse_id: int
 
 
-class TeamCreate(BaseModel):
-    id: int
-    name: str
-    short_name: str
-    strength: Optional[int] = None
+class TeamCreate(TeamBase):
+    pass
 
 
 class TeamRead(TeamBase):
