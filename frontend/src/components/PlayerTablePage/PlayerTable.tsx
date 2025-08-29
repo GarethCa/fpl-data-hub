@@ -28,6 +28,7 @@ export default function PlayersTable({ columns, players, loading, error }: any) 
         navigate(`/player/${row.id}`);
     };
 
+    //TODO: Stop it losing state on resize
     return (
         <div
             ref={containerRef}
