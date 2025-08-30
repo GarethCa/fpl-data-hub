@@ -10,7 +10,7 @@ class PlayerBase(BaseModel):
     first_name: Optional[str] = None
     second_name: Optional[str] = None
     position: Optional[str] = None
-    team_id: Optional[int] = None
+    team_id: Optional[str] = None
     now_cost: Optional[int] = None
     selected_by_percent: Optional[float] = None
     total_points: Optional[int] = None

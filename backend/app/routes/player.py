@@ -7,6 +7,7 @@ from app.db.session import get_db
 from app.db.models.player import Player
 from app.models import PlayerRead
 from app.models import PlayerStatsRead
+from app.services.value_conversions import replace_values
 
 from fastapi import APIRouter
 
@@ -43,9 +44,12 @@ def get_player(player_id: int, db: Session = Depends(get_db)):
     player_dict = dict(player_row)
     player_dict["stats"] = [dict(row) for row in stats_rows]
     player_dict["player_code"] = str(player_dict["stats"][0].get("code"))
+    player_dict = replace_values(player_dict)
     return player_dict
 
 
 @router.get("/", response_model=list[PlayerRead])
 def list_players(db: Session = Depends(get_db)):
-    return db.query(Player).all()
+    players = db.query(Player).all()
+
+    return [replace_values(player.__dict__) for player in players]
