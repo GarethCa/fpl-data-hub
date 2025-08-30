@@ -8,7 +8,7 @@ import { TbPlayFootball } from "react-icons/tb";
 
 const SideBar = () => {
     return (
-        <div className="fixed top-0 left-0 h-screen w-20 m-0 flex-none flex-col bg-gray-700 text-white shadow-lg">
+        <div className="fixed top-0 left-0 h-screen w-20 m-0 flex-none flex-col bg-gray-700 text-white shadow-lg z-50">
         <SideBarIcon icon={<MdOutlineSportsSoccer size="32"/>} text="Home"/>
         <SideBarIcon icon={<SlGraph size="32"/>} text="Stats"/>
         <SideBarIcon icon={<TbPlayFootball size="32"/>} text="Players"/>
