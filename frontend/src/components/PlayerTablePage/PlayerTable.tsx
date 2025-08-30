@@ -5,7 +5,7 @@ import DataTable from "react-data-table-component";
 export default function PlayersTable({ columns, players, loading, error }: any) {
     const rowHeight = 56;
     const headerHeight = 56;
-    const padding = 16;
+    const padding = 8;
     const [pageSize, setPageSize] = useState(10);
     const [tableKey, setTableKey] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ export default function PlayersTable({ columns, players, loading, error }: any) 
     return (
         <div
             ref={containerRef}
-            className="w-full bg-white rounded-xl shadow-lg p-6 flex-1 pb-0"
+            className="w-full bg-white rounded-xl shadow-lg "
         >
             {loading ? (
                 <div className="text-center text-xl text-indigo-700">Loading players...</div>

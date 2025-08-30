@@ -45,11 +45,9 @@ export default function HomePage() {
     ];
 
     return (
-        <div className="min-h-screen bg-white flex flex-row">
-            <SideBar />
-            <div className="flex-1 flex flex-col items-center justify-center py-8 pl-30 pr-10 ">
+      
+            <div >
                 <PlayersTable columns={columns} players={players} loading={loading} error={error} />
             </div>
-        </div>
     );
 }

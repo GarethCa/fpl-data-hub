@@ -8,8 +8,9 @@ from .fixture import FixtureRead
 
 from .player import PlayerBase
 from .player import PlayerCreate
-from .player import PlayerUpdate
 from .player import PlayerRead
+from .player import PlayerStatsRead
+from .player import ElementStatsRead
 
 from .team import TeamBase
 from .team import TeamCreate
@@ -32,8 +33,8 @@ __all__ = [
     "FixtureRead",
     "PlayerBase",
     "PlayerCreate",
-    "PlayerUpdate",
     "PlayerRead",
+    "PlayerStatsRead",
     "TeamBase",
     "TeamCreate",
     "TeamRead",
